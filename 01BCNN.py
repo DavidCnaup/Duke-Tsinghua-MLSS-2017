@@ -48,7 +48,7 @@ fc_flat = tf.reshape(feature_pool2, [-1, 49 * 64])
 output_fc1 = tf.nn.relu(tf.matmul(fc_flat, W_fc1) + b_fc1)
 W_fc2 = weight_variable([1024, 10])  # fc2 layer
 b_fc2 = bias_variable([10])
-y_conv = tf.nn.softmax(tf.matmul(output_fc1, W_fc2) + b_fc2)
+y_conv = tf.matmul(output_fc1, W_fc2) + b_fc2
 # Loss
 cross_entropy = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=y_, logits=y_conv))
 
